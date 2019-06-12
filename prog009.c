@@ -1,21 +1,24 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-
-int converterhexadecimal( int a[5])
-{
-    int decimal=0, contador=4, potencia=0,temporario[5];
-while(contador>=0){
-    temporario[contador] = a[contador]*pow(16,potencia);
-    potencia++;
-    decimal=decimal+temporario[contador];
-    contador--;
-}
-printf("%i",decimal);
-
-    return 0;
-}
 void main(){
-    int binario[]={1,2,3,12,1};
-    converterhexadecimal(binario);
+int x;
+printf("digite um numero: ");
+scanf("%d", &x);
+int n = (int) &x;
+printf("O endereço da memoria guardando o numero em hexadecimal é : %x\n", &x);
+printf("O endereço da memoria guardando o numero em decimal é : %d\n", n);
+int temp,cont=0, bin[50];
+while(n!=1){
+temp=n%2;
+n=n/2;
+bin[cont]= temp;
+cont++;
+}
+bin[cont]=1;
+printf("O endereço da memoria guardando o numero em binario é :");
+for(int a =cont;a>=0;a--){
+printf("%d", bin[a]);
+}
+printf("\n");
 }
