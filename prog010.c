@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void main(){
+
 	
 void somar(float *a, float *b,float *temp){
 
