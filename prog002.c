@@ -1,23 +1,60 @@
-#include <stdio.h>
-#include <math.h>
-#include <string.h>
+include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
+#define TAMANHO 100000
 
-void main(){
-int dia,mes,ano,qtddias = 365,anoatual,idade,anosbissextos;
+void main() {
+    int  vetor[TAMANHO]; 
+    int aux = 0; 
+    int long cont = 0;
+    int long troca = 0;
+    clock_t tempoInicial, tempoFinal; 
+    srand(time(NULL)); 
+    tempoInicial = clock(); 
+    for (int i = 0; i < TAMANHO; i++) {
+        vetor[i] = rand() % 10; 
+    }
+    
+    for (int i = 0; i < TAMANHO; i++) {
+        printf("%d\t", vetor[i]);
+    }
+    printf("\n");
+    
+    for (int i = 1; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO - 1; j++) {
+            if (vetor[j] > vetor[j + 1]) {
+                aux = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = aux;
+                troca = troca + 1;
+            }
+            cont = cont + 1;
+        }
+        printf("\n");
+    }
+     for (int i = 0; i < TAMANHO; i++) {
+        printf("%d\t", vetor[i]);
+     }
+    for (int i = 1; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO - 1; j++) {
+            if (vetor[j] < vetor[j + 1]) {
+                aux = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = aux;
+                troca = troca + 1;
+            }
+            cont = cont + 1;
+        }
+        printf("\n");
+    }
+    
+    for (int i = 0; i < TAMANHO; i++) {
+        printf("%d\t", vetor[i]);
+    }
+    printf("\n");
+    printf("qtd de comparaçao:   %ld\n", cont);
+    printf("qtd de troca:   %ld \n", troca);
+    tempoFinal = clock(); 
+    printf("Tempo: %f s\n", (double) (tempoFinal - tempoInicial) / CLOCKS_PER_SEC);
 
-
-printf("digite o dia:\n");
-scanf("%d",&dia);
-printf("digite o mes:\n");
-scanf("%d",&mes);
-printf("digite o ano:\n");
-scanf("%d",&ano);
-printf("digite o ano atual:\n");
-scanf("%d",&anoatual);
-printf("Quantos anos bissextos existem entre o ano que nasceu e o ano atual?  ");
-scanf("%d",&anosbissextos);
-printf("Qual é a idade do usuário: %d.\n", anoatual-ano);
-idade = anoatual-ano;
-printf("A quantidade de dias de vida do usuario é: %d*%d+%d = %d\n", qtddias, idade,anosbissextos, qtddias*idade+anosbissextos);
-}
+}                
